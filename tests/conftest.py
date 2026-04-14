@@ -272,25 +272,3 @@ def html_100page() -> str:
 {body}
 </body>
 </html>"""
-
-
-# ---------------------------------------------------------------------------
-# Utility fixture
-# ---------------------------------------------------------------------------
-
-
-@pytest.fixture
-def tmp_pdf(tmp_path: Path) -> Path:
-    """Return a ``Path`` pointing to a temporary output PDF file.
-
-    The directory is guaranteed to exist (courtesy of pytest's ``tmp_path``
-    fixture). The file itself does not exist yet — it will be created by the
-    converter under test.
-
-    Args:
-        tmp_path: Pytest's built-in temporary directory fixture.
-
-    Returns:
-        A ``Path`` like ``/tmp/pytest-.../test_.../output.pdf``.
-    """
-    return tmp_path / "output.pdf"

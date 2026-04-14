@@ -120,16 +120,14 @@ def test_convert_fixture(
 
     reader = _assert_valid_pdf(result, output_path)
 
-    # Generous page-count tolerance: we require at least half the expected pages
-    # to avoid flaky failures caused by minor rendering differences across
-    # platform or engine versions.
-    # pypdf >= 6 exposes get_num_pages(); earlier versions used num_pages.
-    num_pages = (
-        reader.get_num_pages()
-        if hasattr(reader, "get_num_pages")
-        else reader.num_pages
-    )
-    min_pages = max(1, expected_pages // 2)
+    # pypdf >= 6 API (pinned in pyproject.toml)
+    num_pages = reader.get_num_pages()
+
+    # Generous tolerance (80 %): CSS page-break rendering is non-deterministic
+    # across headless engine versions and platforms; requiring ~80 % of the
+    # expected pages catches catastrophic failures without being brittle on
+    # minor inter-version rendering differences.
+    min_pages = max(1, int(expected_pages * 0.8))
     assert num_pages >= min_pages, (
         f"[{html_fixture}] Expected >= {min_pages} pages, got {num_pages}"
     )

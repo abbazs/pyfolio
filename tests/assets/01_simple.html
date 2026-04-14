@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Article</title>
+  <style>
+    body { font-family: Georgia, serif; font-size: 12pt; margin: 20mm; color: #222; }
+    h1 { font-size: 22pt; margin-bottom: 12pt; color: #1A3A5C; }
+    p { line-height: 1.7; margin-bottom: 10pt; }
+    .icon-row { display: flex; align-items: center; gap: 12pt; margin-top: 16pt; }
+  </style>
+</head>
+<body>
+  <h1>A Simple Article</h1>
+
+  <p>
+    This is the first paragraph of a simple article. It serves as the introductory
+    content for a minimal HTML document used to verify that pyfolio correctly converts
+    a straightforward, single-page HTML file into a well-formed PDF. The content is
+    intentionally brief so the output is a single page.
+  </p>
+
+  <p>
+    This is the second paragraph. It provides a bit more body text to ensure the
+    converter handles multiple consecutive block elements without issue. The inline
+    SVG icon below is embedded directly in the HTML source — no external file
+    references are needed.
+  </p>
+
+  <!-- Inline SVG icon — no external dependency required -->
+  <div class="icon-row">
+    <span>Article icon:</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+      <circle cx="24" cy="24" r="22" fill="#4A90D9" />
+      <text x="24" y="30" text-anchor="middle" fill="white" font-size="18" font-family="Arial">A</text>
+    </svg>
+  </div>
+</body>
+</html>

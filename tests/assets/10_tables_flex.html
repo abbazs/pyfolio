@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>10-Section Tables &amp; Flexbox Report</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; font-size: 11pt; color: #333; }
+    .section {
+      page-break-after: always;
+      padding: 15mm;
+      min-height: 250mm;
+    }
+    .section:last-child { page-break-after: auto; }
+    h1 { font-size: 20pt; margin-bottom: 14pt; color: #1A3A5C; }
+    h2 { font-size: 15pt; margin-bottom: 10pt; color: #2C5F8A; border-bottom: 1px solid #ccc; padding-bottom: 4pt; }
+    p { line-height: 1.6; margin-bottom: 8pt; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 12pt; }
+    th { background: #2C5F8A; color: white; padding: 6pt 8pt; text-align: left; font-size: 10pt; }
+    td { border: 1px solid #ddd; padding: 5pt 8pt; font-size: 10pt; }
+    tr:nth-child(even) td { background: #f7f9fc; }
+    .flex-row { display: flex; align-items: center; gap: 16pt; margin-top: 10pt; }
+    .flex-row p { margin: 0; }
+  </style>
+</head>
+<body>
+
+  <!-- Cover section -->
+  <div class="section">
+    <h1>10-Section Tables &amp; Flexbox Report</h1>
+    <p>
+      This document is a real-world-style report containing ten sections. Each section
+      includes a data table and a flexbox layout row with an embedded SVG icon. The
+      purpose of this asset file is to verify that pyfolio handles moderately complex
+      HTML layouts — tables, flexbox, and inline SVG — across multiple pages.
+    </p>
+    <p>Generated as a static test asset. No external resources are referenced.</p>
+    <!-- Cover icon -->
+    <div class="flex-row" style="margin-top: 20pt;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56">
+        <rect x="2" y="2" width="52" height="52" rx="8" fill="#2C5F8A"/>
+        <text x="28" y="36" text-anchor="middle" fill="white" font-size="22" font-family="Arial" font-weight="bold">R</text>
+      </svg>
+      <p>Report cover — 10 sections follow.</p>
+    </div>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="section">
+    <h2>Section 1 — Q1 Sales Data</h2>
+    <p>First-quarter sales figures across four product lines.</p>
+    <table>
+      <thead><tr><th>Product</th><th>Units Sold</th><th>Revenue (£)</th><th>Growth %</th></tr></thead>
+      <tbody>
+        <tr><td>Widget A</td><td>1,240</td><td>62,000</td><td>+8.2%</td></tr>
+        <tr><td>Widget B</td><td>980</td><td>49,000</td><td>+3.1%</td></tr>
+        <tr><td>Widget C</td><td>2,100</td><td>105,000</td><td>+12.5%</td></tr>
+        <tr><td>Widget D</td><td>760</td><td>38,000</td><td>-1.4%</td></tr>
+      </tbody>
+    </table>
+    <div class="flex-row">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="18" fill="#27AE60"/>
+      </svg>
+      <p>Section 1 indicator: positive overall trend in Q1.</p>
+    </div>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="section">
+    <h2>Section 2 — Q2 Sales Data</h2>
+    <p>Second-quarter sales figures across four product lines.</p>
+    <table>
+      <thead><tr><th>Product</th><th>Units Sold</th><th>Revenue (£)</th><th>Growth %</th></tr></thead>
+      <tbody>
+        <tr><td>Widget A</td><td>1,380</td><td>69,000</td><td>+11.3%</td></tr>
+        <tr><td>Widget B</td><td>1,050</td><td>52,500</td><td>+7.1%</td></tr>
+        <tr><td>Widget C</td><td>1,890</td><td>94,500</td><td>-10.0%</td></tr>
+        <tr><td>Widget D</td><td>820</td><td>41,000</td><td>+7.9%</td></tr>
+      </tbody>
+    </table>
+    <div class="flex-row">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="18" fill="#F39C12"/>
+      </svg>
+      <p>Section 2 indicator: mixed results in Q2.</p>
+    </div>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="section">
+    <h2>Section 3 — Q3 Sales Data</h2>
+    <p>Third-quarter sales figures across four product lines.</p>
+    <table>
+      <thead><tr><th>Product</th><th>Units Sold</th><th>Revenue (£)</th><th>Growth %</th></tr></thead>
+      <tbody>
+        <tr><td>Widget A</td><td>1,500</td><td>75,000</td><td>+8.7%</td></tr>
+        <tr><td>Widget B</td><td>1,200</td><td>60,000</td><td>+14.3%</td></tr>
+        <tr><td>Widget C</td><td>2,300</td><td>115,000</td><td>+21.7%</td></tr>
+        <tr><td>Widget D</td><td>690</td><td>34,500</td><td>-15.9%</td></tr>
+      </tbody>
+    </table>
+    <div class="flex-row">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="18" fill="#8E44AD"/>
+      </svg>
+      <p>Section 3 indicator: strong growth in Widget C during Q3.</p>
+    </div>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="section">
+    <h2>Section 4 — Q4 Sales Data</h2>
+    <p>Fourth-quarter sales figures and year-end totals.</p>
+    <table>
+      <thead><tr><th>Product</th><th>Units Sold</th><th>Revenue (£)</th><th>Annual Total (£)</th></tr></thead>
+      <tbody>
+        <tr><td>Widget A</td><td>1,620</td><td>81,000</td><td>287,000</td></tr>
+        <tr><td>Widget B</td><td>1,100</td><td>55,000</td><td>216,500</td></tr>
+        <tr><td>Widget C</td><td>2,450</td><td>122,500</td><td>437,000</td></tr>
+        <tr><td>Widget D</td><td>880</td><td>44,000</td><td>157,500</td></tr>
+      </tbody>
+    </table>
+    <div class="flex-row">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="18" fill="#E74C3C"/>
+      </svg>
+      <p>Section 4 indicator: year-end totals compiled.</p>
+    </div>
+  </div>
+
+  <!-- Section 5 -->
+  <div class="section">
+    <h2>Section 5 — Regional Breakdown</h2>
+    <p>Sales broken down by geographic region for the full year.</p>
+    <table>
+      <thead><tr><th>Region</th><th>Sales Offices</th><th>Total Revenue (£)</th><th>Market Share</th></tr></thead>
+      <tbody>
+        <tr><td>North</td><td>4</td><td>320,000</td><td>29.4%</td></tr>
+        <tr><td>South</td><td>6</td><td>410,000</td><td>37.6%</td></tr>
+        <tr><td>East</td><td>3</td><td>190,000</td><td>17.4%</td></tr>
+        <tr><td>West</td><td>3</td><td>170,000</td><td>15.6%</td></tr>
+      </tbody>
+    </table>
+    <div class="flex-row">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="18" fill="#1ABC9C"/>
+      </svg>
+      <p>Section 5 indicator: South region leads in revenue.</p>
+    </div>
+  </div>
+
+  <!-- Section 6 -->
+  <div class="section">
+    <h2>Section 6 — Headcount Summary</h2>
+    <p>Employee headcount and department allocation.</p>
+    <table>
+      <thead><tr><th>Department</th><th>Headcount</th><th>Budget (£)</th><th>Utilisation</th></tr></thead>
+      <tbody>
+        <tr><td>Engineering</td><td>45</td><td>2,250,000</td><td>92%</td></tr>
+        <tr><td>Sales</td><td>30</td><td>900,000</td><td>88%</td></tr>
+        <tr><td>Marketing</td><td>15</td><td>450,000</td><td>75%</td></tr>
+        <tr><td>Operations</td><td>20</td><td>600,000</td><td>95%</td></tr>
+      </tbody>
+    </table>
+    <div class="flex-row">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="18" fill="#2980B9"/>
+      </svg>
+      <p>Section 6 indicator: Engineering at high utilisation.</p>
+    </div>
+  </div>
+
+  <!-- Section 7 -->
+  <div class="section">
+    <h2>Section 7 — Customer Satisfaction</h2>
+    <p>Net Promoter Score and satisfaction breakdown per product.</p>
+    <table>
+      <thead><tr><th>Product</th><th>NPS</th><th>Satisfied %</th><th>Detractors %</th></tr></thead>
+      <tbody>
+        <tr><td>Widget A</td><td>+42</td><td>78%</td><td>12%</td></tr>
+        <tr><td>Widget B</td><td>+31</td><td>68%</td><td>18%</td></tr>
+        <tr><td>Widget C</td><td>+55</td><td>85%</td><td>8%</td></tr>
+        <tr><td>Widget D</td><td>+18</td><td>55%</td><td>25%</td></tr>
+      </tbody>
+    </table>
+    <div class="flex-row">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="18" fill="#D35400"/>
+      </svg>
+      <p>Section 7 indicator: Widget C scores highest in customer satisfaction.</p>
+    </div>
+  </div>
+
+  <!-- Section 8 -->
+  <div class="section">
+    <h2>Section 8 — Infrastructure Costs</h2>
+    <p>Annual infrastructure spend broken down by category.</p>
+    <table>
+      <thead><tr><th>Category</th><th>Q1–Q2 (£)</th><th>Q3–Q4 (£)</th><th>Annual (£)</th></tr></thead>
+      <tbody>
+        <tr><td>Cloud Hosting</td><td>48,000</td><td>52,000</td><td>100,000</td></tr>
+        <tr><td>Networking</td><td>12,000</td><td>13,500</td><td>25,500</td></tr>
+        <tr><td>Security</td><td>18,000</td><td>20,000</td><td>38,000</td></tr>
+        <tr><td>Support</td><td>9,000</td><td>9,500</td><td>18,500</td></tr>
+      </tbody>
+    </table>
+    <div class="flex-row">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="18" fill="#7F8C8D"/>
+      </svg>
+      <p>Section 8 indicator: cloud hosting is the primary cost driver.</p>
+    </div>
+  </div>
+
+  <!-- Section 9 -->
+  <div class="section">
+    <h2>Section 9 — Risk Register</h2>
+    <p>Top risks identified for the upcoming financial year.</p>
+    <table>
+      <thead><tr><th>Risk</th><th>Likelihood</th><th>Impact</th><th>Owner</th></tr></thead>
+      <tbody>
+        <tr><td>Supply chain disruption</td><td>Medium</td><td>High</td><td>Operations</td></tr>
+        <tr><td>Key staff attrition</td><td>Low</td><td>High</td><td>HR</td></tr>
+        <tr><td>Regulatory change</td><td>High</td><td>Medium</td><td>Legal</td></tr>
+        <tr><td>Cyber incident</td><td>Medium</td><td>High</td><td>Security</td></tr>
+      </tbody>
+    </table>
+    <div class="flex-row">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="18" fill="#C0392B"/>
+      </svg>
+      <p>Section 9 indicator: regulatory change rated highest likelihood risk.</p>
+    </div>
+  </div>
+
+  <!-- Section 10 — Summary (no page-break-after) -->
+  <div class="section">
+    <h2>Section 10 — Executive Summary</h2>
+    <p>
+      This concluding section summarises the key findings across all nine preceding
+      sections. Overall the organisation performed well against its annual targets,
+      with Widget C leading revenue growth and the South region contributing the
+      largest share of total sales.
+    </p>
+    <table>
+      <thead><tr><th>KPI</th><th>Target</th><th>Actual</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Total Revenue</td><td>£1,050,000</td><td>£1,098,000</td><td>✓ Met</td></tr>
+        <tr><td>Headcount Growth</td><td>+10%</td><td>+8.5%</td><td>~ Partial</td></tr>
+        <tr><td>NPS Average</td><td>+35</td><td>+36.5</td><td>✓ Met</td></tr>
+        <tr><td>Infra Cost</td><td>&lt;£185,000</td><td>£182,000</td><td>✓ Met</td></tr>
+      </tbody>
+    </table>
+    <div class="flex-row">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="18" fill="#27AE60"/>
+        <text x="20" y="26" text-anchor="middle" fill="white" font-size="16" font-family="Arial">✓</text>
+      </svg>
+      <p>Section 10: three of four KPIs met or exceeded.</p>
+    </div>
+  </div>
+
+</body>
+</html>

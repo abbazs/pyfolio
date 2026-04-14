@@ -1,0 +1,63 @@
+[build-system]
+requires = ["maturin>=1.7,<2"]
+build-backend = "maturin"
+
+[project]
+name = "pyfolio"
+version = "0.1.0"
+description = "Python wrapper for folio HTML-to-PDF generator via PyO3 Rust extension"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "Apache-2.0" }
+keywords = ["pdf", "html", "folio", "converter"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Rust",
+    "Topic :: Software Development :: Libraries",
+]
+dependencies = [
+    "cyclopts>=3.0",
+    "rich>=13.0",
+    "rich-stepper>=0.2.0",
+]
+
+[project.scripts]
+pyfolio = "pyfolio.cli:app"
+pf = "pyfolio.cli:app"
+
+[project.urls]
+Homepage = "https://github.com/abbazs/pyfolio"
+Repository = "https://github.com/abbazs/pyfolio"
+Issues = "https://github.com/abbazs/pyfolio/issues"
+
+[tool.maturin]
+python-source = "python"
+module-name = "pyfolio._pyfolio"
+features = ["pyo3/extension-module"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "SIM"]
+
+[tool.mypy]
+strict = true
+python_version = "3.12"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.20.1",
+    "pypdf>=6.10.0",
+    "pytest>=9.0.3",
+    "ruff>=0.15.10",
+]

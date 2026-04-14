@@ -1,0 +1,22 @@
+[package]
+name = "pyfolio"
+version = "0.1.0"
+edition = "2021"
+description = "Python bindings for folio HTML-to-PDF library"
+license = "Apache-2.0"
+
+[lib]
+name = "_pyfolio"
+crate-type = ["cdylib"]
+
+[build-dependencies]
+bindgen = "0.69"
+
+[dependencies]
+pyo3 = { version = "0.25", features = ["extension-module"] }
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true

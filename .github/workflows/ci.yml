@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: stable
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Install patchelf
+        run: sudo apt-get install -y patchelf
+
+      - name: Install maturin
+        run: uv tool install maturin
+
+      - name: Install Python dependencies
+        run: uv sync --all-extras
+
+      - name: Build Python extension
+        run: uv run maturin develop
+
+      - name: Run tests
+        run: uv run pytest -v

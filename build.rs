@@ -157,8 +157,11 @@ fn main() {
         .env("GOPATH", out_dir.join("gopath").to_str().unwrap());
 
     if target_os == "windows" {
-        // Prefer MSVC so cgo generates a folio.lib import library directly.
-        go_build.env("CC", "cl").env("CGO_ENABLED", "1");
+        // CGO_ENABLED=1 is required for buildmode=c-shared.
+        // Go will use MinGW (gcc) on GitHub Actions Windows runners since cl.exe
+        // is not on PATH without the MSVC Developer Command Prompt.
+        // ensure_import_lib() below generates folio.lib from the DLL afterward.
+        go_build.env("CGO_ENABLED", "1");
     }
 
     let status = go_build

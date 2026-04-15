@@ -110,9 +110,17 @@ fn main() {
         .expect("Couldn't write bindings.rs");
 
     println!("cargo:rustc-link-search=native={}", out_dir.display());
-    println!("cargo:rustc-link-lib=dylib=folio");
 
-    // Embed the OUT_DIR as an rpath so the dynamic linker can find libfolio.so at runtime
-    // without requiring LD_LIBRARY_PATH to be set manually.
-    println!("cargo:rustc-link-arg=-Wl,-rpath,{}", out_dir.display());
+    if target_os == "windows" {
+        // On Windows, MSVC's link.exe does not reliably resolve libraries via
+        // cargo:rustc-link-search. Pass the full path to folio.lib directly so
+        // the linker finds it regardless of search path propagation.
+        let lib_file = out_dir.join("folio.lib");
+        println!("cargo:rustc-link-arg={}", lib_file.display());
+    } else {
+        println!("cargo:rustc-link-lib=dylib=folio");
+        // Embed OUT_DIR as rpath so the dynamic linker finds libfolio at runtime
+        // without requiring LD_LIBRARY_PATH / DYLD_LIBRARY_PATH to be set.
+        println!("cargo:rustc-link-arg=-Wl,-rpath,{}", out_dir.display());
+    }
 }

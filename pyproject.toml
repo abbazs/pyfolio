@@ -6,6 +6,7 @@ build-backend = "maturin"
 name = "gofolio"
 version = "0.1.0"
 description = "Python wrapper for folio HTML-to-PDF generator via PyO3 Rust extension"
+readme = "README.md"
 requires-python = ">=3.12"
 license = { text = "Apache-2.0" }
 keywords = ["pdf", "html", "folio", "converter"]

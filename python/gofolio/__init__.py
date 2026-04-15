@@ -11,6 +11,6 @@ if sys.platform == "win32":
     if hasattr(os, "add_dll_directory"):
         os.add_dll_directory(_pkg_dir)
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 __all__ = ["__version__"]

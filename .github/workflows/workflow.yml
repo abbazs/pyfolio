@@ -40,6 +40,12 @@ jobs:
         if: runner.os == 'Windows'
         run: pip install delvewheel
 
+      # Activate the MSVC Developer Command Prompt so cl.exe and lib.exe are
+      # on PATH. Go's CGO then uses MSVC and produces folio.lib natively.
+      - name: Set up MSVC developer environment (Windows only)
+        if: runner.os == 'Windows'
+        uses: ilammy/msvc-dev-cmd@v1
+
       - name: Build wheels
         run: maturin build --release --out target/wheels/
 

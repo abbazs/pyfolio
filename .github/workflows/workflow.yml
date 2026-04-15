@@ -36,8 +36,24 @@ jobs:
         if: runner.os == 'Linux'
         run: sudo apt-get install -y patchelf
 
+      - name: Install delvewheel (Windows only)
+        if: runner.os == 'Windows'
+        run: pip install delvewheel
+
       - name: Build wheels
         run: maturin build --release --out target/wheels/
+
+      - name: Repair wheel with delvewheel (Windows only)
+        # delvewheel bundles folio.dll (and any transitive DLLs) inside the wheel
+        # so end-users don't need to install anything extra.
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $wheel = Get-ChildItem target\wheels\*.whl | Select-Object -First 1
+          $dllDir = Get-ChildItem -Recurse -Path target\release\build -Filter folio.dll `
+                    | Select-Object -First 1 | Split-Path
+          delvewheel repair $wheel.FullName --wheel-dir target\wheels\ --add-path $dllDir
+          Remove-Item $wheel.FullName
 
       - name: Upload wheels
         uses: actions/upload-artifact@v4

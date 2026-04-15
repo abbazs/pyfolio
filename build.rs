@@ -158,11 +158,12 @@ fn main() {
 
     if target_os == "windows" {
         // CGO_ENABLED=1 is required for buildmode=c-shared.
-        // CC=cl tells Go to use MSVC (cl.exe) for CGO so it generates folio.lib
-        // natively alongside folio.dll. Requires the MSVC Developer Command
-        // Prompt to be active (ilammy/msvc-dev-cmd in CI; VS DevCmd locally).
-        // ensure_import_lib() below is a fallback if MSVC is not available.
-        go_build.env("CGO_ENABLED", "1").env("CC", "cl");
+        // Do NOT set CC=cl: MSVC (cl.exe) is incompatible with CGO because CGO
+        // passes GCC-style flags (e.g. -Werror) that cl.exe rejects.
+        // Go uses MinGW gcc (on PATH on GitHub Actions and most Windows dev machines).
+        // ensure_import_lib() below generates the MSVC-compatible folio.lib from
+        // the resulting DLL using llvm-dlltool or lib.exe.
+        go_build.env("CGO_ENABLED", "1");
     }
 
     let status = go_build

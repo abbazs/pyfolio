@@ -76,9 +76,9 @@ fn convert_html_to_pdf(
     )
 }
 
-/// pyfolio Rust extension — folio HTML-to-PDF bindings.
+/// gofolio Rust extension — folio HTML-to-PDF bindings.
 #[pymodule]
-fn _pyfolio(m: &Bound<'_, PyModule>) -> PyResult<()> {
+fn _gofolio(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(convert_html_to_pdf, m)?)?;
     Ok(())
 }

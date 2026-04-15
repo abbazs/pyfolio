@@ -3,7 +3,7 @@ requires = ["maturin>=1.7,<2"]
 build-backend = "maturin"
 
 [project]
-name = "pyfolio"
+name = "gofolio"
 version = "0.1.0"
 description = "Python wrapper for folio HTML-to-PDF generator via PyO3 Rust extension"
 readme = "README.md"
@@ -28,17 +28,17 @@ dependencies = [
 ]
 
 [project.scripts]
-pyfolio = "pyfolio.cli:app"
-pf = "pyfolio.cli:app"
+gofolio = "gofolio.cli:app"
+gf = "gofolio.cli:app"
 
 [project.urls]
-Homepage = "https://github.com/abbazs/pyfolio"
-Repository = "https://github.com/abbazs/pyfolio"
-Issues = "https://github.com/abbazs/pyfolio/issues"
+Homepage = "https://github.com/abbazs/gofolio"
+Repository = "https://github.com/abbazs/gofolio"
+Issues = "https://github.com/abbazs/gofolio/issues"
 
 [tool.maturin]
 python-source = "python"
-module-name = "pyfolio._pyfolio"
+module-name = "gofolio._gofolio"
 features = ["pyo3/extension-module"]
 
 [tool.ruff]

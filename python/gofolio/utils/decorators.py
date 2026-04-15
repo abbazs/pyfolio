@@ -1,4 +1,4 @@
-"""CLI decorators and context managers for pyfolio."""
+"""CLI decorators and context managers for gofolio."""
 
 import functools
 import traceback
@@ -16,7 +16,7 @@ from rich.progress import (
     TimeElapsedColumn,
 )
 
-from pyfolio.utils.console import console as _default_console
+from gofolio.utils.console import console as _default_console
 
 
 class cli_progress:
@@ -61,11 +61,11 @@ def handle_cli_errors[**P, R](func: Callable[P, R]) -> Callable[P, R]:
         try:
             return func(*args, **kwargs)
         except KeyboardInterrupt:
-            from pyfolio.utils.rp import rp
+            from gofolio.utils.rp import rp
 
             rp.warning("Operation cancelled.")
         except ValueError as e:
-            from pyfolio.utils.console import console
+            from gofolio.utils.console import console
 
             console.print(
                 Panel(
@@ -75,7 +75,7 @@ def handle_cli_errors[**P, R](func: Callable[P, R]) -> Callable[P, R]:
                 )
             )
         except FileNotFoundError as e:
-            from pyfolio.utils.console import console
+            from gofolio.utils.console import console
 
             console.print(
                 Panel(
@@ -85,7 +85,7 @@ def handle_cli_errors[**P, R](func: Callable[P, R]) -> Callable[P, R]:
                 )
             )
         except Exception as e:
-            from pyfolio.utils.console import console
+            from gofolio.utils.console import console
 
             error_panel = Panel(
                 f"[red]{traceback.format_exc()}[/red]",

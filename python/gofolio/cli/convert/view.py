@@ -3,8 +3,8 @@
 from rich.panel import Panel
 from stepper import Stepper, StepperTheme, StepStatus
 
-from pyfolio.cli.convert.models import ConvertResult
-from pyfolio.utils.console import console
+from gofolio.cli.convert.models import ConvertResult
+from gofolio.utils.console import console
 
 
 def _human_size(size_bytes: int) -> str:

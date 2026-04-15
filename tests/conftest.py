@@ -1,4 +1,4 @@
-"""Pytest configuration and shared fixtures for pyfolio tests.
+"""Pytest configuration and shared fixtures for gofolio tests.
 
 Provides programmatically generated HTML fixture strings and a temporary PDF
 path fixture used across the test suite.

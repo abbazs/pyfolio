@@ -7,7 +7,7 @@ from typing import Annotated
 
 import cyclopts
 
-from pyfolio.utils.decorators import handle_cli_errors
+from gofolio.utils.decorators import handle_cli_errors
 
 from . import controller, view
 

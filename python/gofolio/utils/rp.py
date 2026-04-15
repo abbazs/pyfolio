@@ -13,7 +13,7 @@ class RichPrint:
     def console(self) -> Console:
         """Lazy-load the shared console singleton."""
         if self._console is None:
-            from pyfolio.utils.console import console
+            from gofolio.utils.console import console
 
             self._console = console
         return self._console

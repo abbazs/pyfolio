@@ -12,8 +12,8 @@ from pathlib import Path
 import pypdf
 import pytest
 
-from pyfolio.cli.convert.controller import convert
-from pyfolio.cli.convert.models import ConvertResult
+from gofolio.cli.convert.controller import convert
+from gofolio.cli.convert.models import ConvertResult
 
 
 # ---------------------------------------------------------------------------

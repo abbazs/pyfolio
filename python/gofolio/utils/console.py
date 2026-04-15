@@ -1,4 +1,4 @@
-"""Rich console singleton for pyfolio CLI output."""
+"""Rich console singleton for gofolio CLI output."""
 
 from rich.console import Console
 

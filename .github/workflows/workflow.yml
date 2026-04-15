@@ -55,11 +55,12 @@ jobs:
         if: runner.os == 'Windows'
         shell: pwsh
         run: |
-          $wheel = Get-ChildItem target\wheels\*.whl | Select-Object -First 1
-          $dllDir = Get-ChildItem -Recurse -Path target\release\build -Filter folio.dll `
-                    | Select-Object -First 1 | Split-Path
-          delvewheel repair $wheel.FullName --wheel-dir target\wheels\ --add-path $dllDir
-          Remove-Item $wheel.FullName
+          $wheel = (Get-ChildItem target\wheels\*.whl | Select-Object -First 1).FullName
+          $dllFile = Get-ChildItem -Recurse -Path target\release\build -Filter folio.dll | Select-Object -First 1
+          $dllDir = $dllFile.DirectoryName
+          Write-Host "Repairing $wheel with DLL from $dllDir"
+          delvewheel repair $wheel --wheel-dir target\wheels\ --add-path $dllDir
+          Remove-Item $wheel
 
       - name: Upload wheels
         uses: actions/upload-artifact@v4

@@ -11,6 +11,8 @@ if sys.platform == "win32":
     if hasattr(os, "add_dll_directory"):
         os.add_dll_directory(_pkg_dir)
 
+from gofolio._gofolio import convert_html_to_pdf  # noqa: E402
+
 __version__ = "0.1.1"
 
-__all__ = ["__version__"]
+__all__ = ["convert_html_to_pdf", "__version__"]

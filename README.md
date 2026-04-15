@@ -22,7 +22,7 @@ gf convert --input report.html --output report.pdf \
 ## Python API
 
 ```python
-from gofolio._gofolio import convert_html_to_pdf
+from gofolio import convert_html_to_pdf
 
 convert_html_to_pdf(
     html="<h1>Hello</h1><p>World</p>",

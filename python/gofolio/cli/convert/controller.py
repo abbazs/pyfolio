@@ -3,7 +3,7 @@
 import os
 from pathlib import Path
 
-from gofolio._gofolio import convert_html_to_pdf as _convert
+from gofolio import convert_html_to_pdf as _convert
 
 from .models import ConvertResult
 

@@ -29,8 +29,11 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install maturin
-        run: pip install maturin patchelf
+      - name: Install maturin and patchelf (Linux only)
+        run: |
+          pip install maturin
+          if [ "$RUNNER_OS" = "Linux" ]; then sudo apt-get install -y patchelf; fi
+        shell: bash
 
       - name: Build wheels
         run: maturin build --release --out target/wheels/
@@ -44,6 +47,9 @@ jobs:
   publish:
     needs: build
     runs-on: ubuntu-latest
+    # OIDC trusted publisher — no API token needed
+    permissions:
+      id-token: write
 
     steps:
       - name: Download all wheel artifacts
@@ -52,13 +58,7 @@ jobs:
           path: dist/
           merge-multiple: true
 
-      - name: Flatten artifact structure
-        run: |
-          mkdir -p final_dist
-          find dist/ -name "*.whl" -exec mv {} final_dist/ \;
-
-      - name: Publish to PyPI
-        run: pip install twine && twine upload final_dist/*
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+      - name: Publish to PyPI via trusted publisher (OIDC)
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist/
